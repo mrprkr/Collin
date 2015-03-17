@@ -35,7 +35,7 @@ app.config(['$routeProvider', '$locationProvider',
 			});
 
 		$locationProvider.html5Mode(true);
-}])
+}]);
 
 //FACTORIES
 app.factory("Auth", ["$firebaseAuth", function($firebaseAuth) {
@@ -76,7 +76,7 @@ app.controller('auth-controller', function($scope, $firebase, Auth, $timeout, $l
 });
 
 
-app.controller('main-controller', function($scope, Auth, $timeout, $location){
+app.controller('main-controller', function($scope, Auth, $timeout, $firebaseArray, $location){
 	Auth.$onAuth(function(authData){
 		if (authData) {
 			$scope.authData = authData;
@@ -88,6 +88,30 @@ app.controller('main-controller', function($scope, Auth, $timeout, $location){
 		$location.path('/login');
 	};
 
+	var ref = new Firebase(firebaseURL).child('costs');
+	var costsArray = $firebaseArray(ref);
+	$scope.costs = costsArray;
+	
+	//log the applicable functions
+	console.log($scope.costs);
+
+
+	$scope.newCost = function(){
+		$scope.costs.$add({
+			name: "My first Cost",
+			desc: "Shopping",
+			date: "timestamp here",
+			payee: "Parker",
+			cost: "$44.50",
+			payer: "Tom",
+			owing: "$22.00"
+		});
+	};
+
+	$scope.remove = function(object){
+		console.log("removing:", this);
+		$scope.costs.$remove(object);
+	}
 
 
 });

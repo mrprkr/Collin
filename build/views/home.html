@@ -3,3 +3,12 @@
 </nav>
 
 <h1>Home View</h1>
+
+<div ng-repeat="cost in costs">
+<p>{{cost.$id}}</p>
+<p>{{cost.name}}</p>
+<p>{{cost.desc}}</p>
+<p>{{cost.cost}}</p>
+
+<button ng-click="remove(this.cost)">remove</button>
+</div>
