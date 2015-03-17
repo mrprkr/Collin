@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="tom_tab">
+<head>
+	<title>Tom Tab</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
+	<base href="/#">
+
+	<script type="text/javascript" src="assets/js/lib/angular/angular.js"></script>
+	<script type="text/javascript" src="assets/js/lib/firebase/firebase.js"></script>
+	<script type="text/javascript" src="assets/js/lib/angularfire/dist/angularfire.js"></script>
+	<script type="text/javascript" src="assets/js/lib/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="assets/js/templateCache.js"></script>
+	<script type="text/javascript" src="assets/js/angular-app.js"></script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/login">Login</a></li>
+		</ul>
+	</nav>
+	<div ng-view></div>
+</body>
+</html>
