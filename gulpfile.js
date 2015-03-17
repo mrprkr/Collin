@@ -16,7 +16,14 @@ var modRewrite  = require('connect-modrewrite');
 var middleware = require('middleware');
 var reload = browserSync.reload;
 
-gulp.task('index', function(){
+//move fonts
+gulp.task('fonts', function(){
+	return gulp.src('./build/fonts/**/*')
+	.pipe(gulp.dest('./app/assets/css/fonts'))
+})
+
+//move the index file
+gulp.task('index',['fonts'], function(){
 	return gulp.src('./build/index.html')
 	.pipe(gulp.dest('./app/'))
 })

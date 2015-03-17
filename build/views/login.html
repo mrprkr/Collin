@@ -1,7 +1,19 @@
-<h2>Welcome to Collin</h2>
-<form>
-	<h4>Please log in</h4>
-	<input type="text" ng-model="email" placeholder="email">
-	<input type="password" ng-model="password" placeholder="password">
-	<button ng-click="login(email, password)">Login</button>
-</form>
+
+<div id="login-container">
+	<h1>Collin</h1>
+	<form id="login-form">
+		<h4>Please log in</h4>
+		<input type="text" ng-model="email" placeholder="email">
+		<input type="password" ng-model="password" placeholder="password">
+		<button ng-click="login(email, password)">
+			<span ng-if="!authenticating">Login</span>
+			<span ng-if="authenticating">loading...</span>
+		</button>
+	</form>
+</div>
+
+<style>
+	body {
+		
+	}
+</style>

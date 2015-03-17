@@ -1,0 +1,9 @@
+//sass variables
+@font-face {
+	font-family: DIN Alternate;
+	src: url('fonts/DIN Alternate Bold.ttf');
+}
+
+$font-condensed: DIN Alternate, Helvetica, sans-serif;
+
+$dark_grey: #222;
