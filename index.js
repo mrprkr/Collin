@@ -1,2 +1,2 @@
-var express = require('express');
-var app = express;
+//no entry point
+//deployed using firebase
