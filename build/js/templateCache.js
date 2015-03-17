@@ -1,3 +1,3 @@
-angular.module("templatescache", []).run(["$templateCache", function($templateCache) {$templateCache.put("foo.html","<h2>Foo</h2>");
-$templateCache.put("home.html","<h1>home</h1>");
-$templateCache.put("login.html","<h4>login</h4>");}]);
+angular.module("templatescache", []).run(["$templateCache", function($templateCache) {$templateCache.put("home.html","<nav>\n	<button ng-click=\"logout()\">Logout</button>\n</nav>\n\n<h1>Home View</h1>");
+$templateCache.put("login.html","<h2>Welcome to Collin</h2>\n<form ng-if=\"!authData\">\n	<h4>Please log in</h4>\n	<input type=\"text\" ng-model=\"email\" placeholder=\"email\">\n	<input type=\"password\" ng-model=\"password\" placeholder=\"password\">\n	<button ng-click=\"login(email, password)\">Login</button>\n</form>");
+$templateCache.put("overview.html","overview");}]);

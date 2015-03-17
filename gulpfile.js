@@ -12,6 +12,8 @@ var notify = require('gulp-notify');
 var templateCache = require ('gulp-angular-templatecache');
 var streamqueue = require('streamqueue');
 var browserSync = require('browser-sync');
+var modRewrite  = require('connect-modrewrite');
+var middleware = require('middleware');
 var reload = browserSync.reload;
 
 gulp.task('index', function(){
@@ -80,6 +82,12 @@ gulp.task('serve', function(){
 	        server: {
 	            baseDir: "app/"
 	        },
+	        //html5 mode for anuglar
+	        middleware: [
+                modRewrite([
+                    '!\\.\\w+$ /index.html [L]'
+                ])
+            ],
 	        //don't open a new tab each time gulp runs
 	        open: false 
 	    });
