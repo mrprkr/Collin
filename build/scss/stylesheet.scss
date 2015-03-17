@@ -1,7 +1,3 @@
-//Styles for collin
-@import 'variables';
-@import 'login';
-
 * {
 	 margin: 0;
 	 padding: 0;
@@ -16,6 +12,7 @@ body {
 	 	family: sans-serif;
 	 }
 }
+
 
 a {
 	color: inherit;
@@ -46,3 +43,7 @@ button {
 		margin-left: 1.4em;
 	}
 }
+
+//Styles for collin
+@import 'variables';
+@import 'login';

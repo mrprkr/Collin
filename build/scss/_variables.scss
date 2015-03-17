@@ -1,8 +1,8 @@
 //sass variables
 @font-face {
-	font-family: DIN Alternate;
+	font-family: "DIN Alternate";
 	font-weight: bold;
-	src: url('fonts/DIN_Alternate_Bold.ttf') format('truetype');
+	src: url("fonts/DIN_Alternate_Bold.ttf") format("truetype");
 }
 
 $font-condensed: DIN Alternate, Helvetica, sans-serif;
