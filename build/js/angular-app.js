@@ -30,6 +30,11 @@ app.config(['$routeProvider', '$locationProvider',
 				controller: 'auth-controller'
 			})
 
+			.when('/temp', {
+				templateUrl: "temp.html",
+				controller: 'temp-controller'
+			})
+
 			.otherwise({
 				redirectTo: '/'
 			});
@@ -89,12 +94,7 @@ app.controller('main-controller', function($scope, Auth, $timeout, $firebaseArra
 	};
 
 	var ref = new Firebase(firebaseURL).child('costs');
-	var costsArray = $firebaseArray(ref);
-	$scope.costs = costsArray;
-	
-	//log the applicable functions
-	console.log($scope.costs);
-
+	$scope.costs = $firebaseArray(ref);
 
 	$scope.newCost = function(){
 		$scope.costs.$add({
@@ -113,8 +113,76 @@ app.controller('main-controller', function($scope, Auth, $timeout, $firebaseArra
 		$scope.costs.$remove(object);
 	}
 
+	$scope.newExpense = {};
+	$scope.newExpense.split = true;
+
+	$scope.createNewExpense = function(){
+		if($scope.newExpense.split === true){
+			$scope.newExpense.owed = ($scope.newExpense.amount/2).toFixed(2);
+		}
+		else {
+			$scope.newExpense.owed = $scope.newExpense.amount;
+		}
+		$scope.newExpense.author = $scope.authData.password.email;
+		$scope.costs.$add($scope.newExpense);
+		$scope.expenseForm = false;
+		console.log("new expense created", $scope.newExpense);
+	}
+
+	$scope.yourBalance = function(){
+		var owing;
+		for (cost in $scope.costs){
+			owing += $scope.costs[cost].owing;
+		}
+		return owing;
+
+	}
 
 });
+
+
+app.controller('temp-controller', function($scope){
+
+	// $scope.balance = {
+	// 	parker : 41.00;
+	// }
+
+	var c = document.getElementById("experiment-canvas");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle = "#ffffff";
+	// ctx.fillRect(0,0,150,75);
+	ctx.strokeStyle = "#fff";
+	ctx.rect(0, 50, 150, 50);
+
+	ctx.stroke();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

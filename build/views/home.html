@@ -3,10 +3,38 @@
 </nav>
 
 <div class="home-container">
-	<h1>Home View</h1>
+	<div class="create-new-container">
+		<button>New Remittance</button>
+		<button ng-click="expenseForm = !expenseForm">New Expense</button>
+	</div>
+
+	<div ng-if="expenseForm" class="new-expense-form">
+		<form>
+			<input type="text" placeholder="expense name" ng-model="newExpense.name">
+			<input type="text" placeholder="amount" ng-model="newExpense.amount">
+			<input type="checkbox" ng-model="newExpense.split"><label>even split</label>
+			<button ng-click="createNewExpense()">Create new expense</button>
+		</form>
+	</div>
+
+	<div class="tab-container">
+		<h2>Your Balance:</h2>
+		
+	</div>
+
+	<div class="transaction-container">
+		<p>Transactions:</p><br/>
+		<ul>
+		<li ng-repeat="cost in costs">{{cost.name}} <br/> Paid: ${{cost.amount}} | 
+		<span ng-if="cost.author == authData.password.email">Owed: ${{cost.owed}} </span>
+		<span ng-if="cost.author != authData.password.email">Owing: ${{cost.owed}} </span> |<a href="" ng-click="remove(this.cost)"> remove</a><br/><br/></li>
+	</div>
+
+
+	<!-- <h1>Home View</h1>
 	<ol>
-		<li ng-repeat="cost in costs">{{cost.name}} | {{cost.desc}} | {{cost.cost}} | <a href="" ng-click="remove(this.cost)">remove</a></li>
-	</ol>
+		<li ng-repeat="cost in costs">{{cost.name}} | {{cost.desc}} | {{cost.cost}} |  <a href="" ng-click="remove(this.cost)">remove</a></li> 
+	</ol>-->
 
 </div>
 
